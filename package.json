@@ -1,0 +1,19 @@
+{
+    "name": "practice",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "directories": {
+      "lib": "lib",
+      "test": "test"
+    },
+    "scripts": {
+      "test": "jest"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "inquirer": "^7.0.1",
+      "jest": "^24.9.0"
+    }
+  }
