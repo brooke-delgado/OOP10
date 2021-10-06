@@ -61,15 +61,82 @@ function createYourTeam() {
       statement = answers.command;
       switch (statement) {
         case "add Engineer":
-          EngineerGet();
+          getEngineer();
           break;
 
         case "Add Intern":
-          Internget();
+          getIntern();
           break;
         case "Create Team":
-          makeTeam();
+          buildTeam();
           break;
       }
-    });
+    })
 }
+function getEngineer() {
+    inquirer
+    .prompt([
+        {
+           type:"input",
+           name:"name",
+           massage: "what is the engineers name" 
+        },
+        {
+            type:"input",
+            name:"id",
+            massage:"what is the engineers id"
+        },
+         {       
+             type:"input",
+             name:"email",
+             message:"what is the engineers email?"
+            },
+            {
+                type:"input",
+                name:"github",
+                messages:"what is the engineers github username?"
+            }
+    ])
+    .then(answers => {
+        var {name, id, email, github} = answers;
+        var engineers = Engineer(name, id, email, github);
+        TeamMate.push(engineer);
+    })
+}
+
+function getIntern() {
+    inquirer
+    .prompt([
+        {
+            type: "input",
+                name: "name",
+                message: "What is the Interns name?"
+            },
+            {
+                type: "input",
+                name: "id",
+                message: "What is the Interns id?"
+            },
+            {
+                type: "input",
+                name: "email",
+                message: "What is the Interns email?"
+            },
+            {
+                type: "input",
+                name: "school",
+                message: "What is the school name?"
+            }
+
+    ])
+
+.then(answers => {
+    var {name, id, email, school} = answers;
+    var intern = Intern(name, id, email, school);
+})
+}
+function buildTeam() {
+    fs.writeFileSync(outputPath, mainRender(TeamMate), "utf-8");
+
+}
+mainApp()
